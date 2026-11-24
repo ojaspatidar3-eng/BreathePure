@@ -69,7 +69,7 @@ Citizens frequently face confusing air quality indices, lack actionable microenv
 - **Transparent Data Provenance & Proven Data Sources:** The application rigorously differentiates between data sources supported by the code:
   - **Model-Based Atmospheric Reanalysis Data:** Continuous ambient pollutant estimates retrieved via the Open-Meteo Air Quality API with standardized CPCB NAQI calculation (clearly identified as model-based atmospheric reanalysis, not direct CPCB physical ground-station monitors).
   - **Manual Simulation Entry:** Interactive user-input console enabling scenario testing of extreme pollution spikes, microenvironments, and educational exercises without fabricating live data.
-  - **Actual Station Data & Offline State:** Robust state architecture supporting physical ground-station monitoring inputs alongside an honest fallback state (illustrative baseline or data unavailable status when external APIs are unreachable, never inventing readings).
+  - **Offline & Fallback State:** Honest fallback handling with illustrative baseline or data-unavailable status when external APIs are unreachable. The application does not claim direct physical ground-station readings.
 - Interactive Manual AQI simulation console for evaluating extreme scenarios.
 
 ### D. AI Air Quality Assistant
@@ -90,7 +90,7 @@ Citizens frequently face confusing air quality indices, lack actionable microenv
 - Dangers of ozone-generating ionizers and chemical aerosol sprays.
 - Kitchen door isolation and induction cooking transition.
 - Wet microfiber mopping vs. harmful dry broom dust resuspension.
-- Strategic midday solar window ventilation timing (13:00 - 15:30).
+- Ventilation timing guidance based on current outdoor air-quality conditions rather than fixed universal time windows.
 
 ### G. Sustainable Alternatives Engine
 - Side-by-side comparative analyses:
