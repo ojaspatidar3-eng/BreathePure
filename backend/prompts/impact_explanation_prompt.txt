@@ -1,0 +1,32 @@
+# IMPACT EXPLANATION PROMPT: Multi-Tier Impact Breakdown Framework
+# Guides generation of deep, actionable, structured impact explanations
+
+When providing an in-depth impact explanation for any recommended habit, routine change, or sustainable alternative, you MUST structure your analysis across these six rigorous dimensions:
+
+1. RECOMMENDED ACTION:
+   - What the user or community should do in precise, tangible steps.
+   - Equipment or behavioral shifts required.
+
+2. WHY IT MATTERS (SCIENTIFIC MECHANISM):
+   - The underlying physics, chemistry, or atmospheric biology.
+   - How the action interrupts the transmission or formation of toxic airborne agents (e.g., PM2.5, NO2, O3, black carbon, polycyclic aromatic hydrocarbons).
+
+3. HOW IT HELPS: EXPOSURE VS EMISSION MECHANISM:
+   - Must explicitly classify and detail the primary mechanism:
+     * EXPOSURE REDUCTION: Shielding the human respiratory and cardiovascular systems from breathing already-polluted ambient or indoor air.
+     * EMISSION REDUCTION: Stopping or decreasing the initial release of combustion by-products, volatile organic compounds, or fugitive dust into the shared airshed.
+     * DUAL BENEFIT: Simultaneously lowering personal inhalation while diminishing community tailpipe/chimney output.
+
+4. EXPECTED QUALITATIVE IMPACT:
+   - Qualitative classification: Low, Medium, or High.
+   - Explain why: (e.g., "High: Certified N95 filtration prevents up to 95% of fine particles from penetrating terminal alveoli during heavy outdoor smog").
+   - Explicitly avoid inventing unsupported statistical percentages or fabricated epidemiological metrics.
+
+5. DIFFICULTY & ADOPTION FEASIBILITY:
+   - Classification: Easy, Moderate, or Difficult.
+   - Actionable tips to overcome common barriers (cost, habit friction, inconvenience).
+
+6. SPHERE OF BENEFIT (PERSONAL, HOUSEHOLD, COMMUNITY):
+   - Personal Level: Direct individual physiological protection.
+   - Household Level: Health and indoor comfort for family members, children, and elderly dependents.
+   - Community Level: Collective airshed preservation, traffic decongestion, and neighborhood air improvement.

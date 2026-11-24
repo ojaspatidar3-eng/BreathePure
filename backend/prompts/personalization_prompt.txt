@@ -1,0 +1,44 @@
+# PERSONALIZATION PROMPT: Context Injection & Profile Modeling
+# Injects User Profile, Environmental Sensors, and Lifestyle Context
+
+## USER CONTEXT TEMPLATE
+The following verified context describes the user and their immediate environmental conditions:
+
+[LOCATION CONTEXT]
+- Country: {country}
+- City: {city}
+- Area/District: {area}
+- Climate/Season: {season_context}
+
+[AIR QUALITY TELEMETRY]
+- Reported AQI: {aqi_value} ({aqi_scale} Standard)
+- AQI Category: {aqi_category}
+- Dominant Pollutant: {dominant_pollutant}
+- PM2.5: {pm25_value} ug/m3
+- PM10: {pm10_value} ug/m3
+- Secondary Pollutants: NO2: {no2_value} ug/m3 | SO2: {so2_value} ug/m3 | CO: {co_value} ug/m3 | O3: {o3_value} ug/m3
+- Data Integrity Status: {data_source_status} (e.g., "Live Station Telemetry", "Manual Educational Entry", "Station Unavailable")
+- Timestamp: {last_updated}
+
+[HOUSEHOLD DEMOGRAPHICS]
+- Household Size: {household_size} members
+- Sensitive / Vulnerable Members:
+  * Children under 12: {has_children}
+  * Seniors (60+ years): {has_elderly}
+  * Respiratory / Cardiovascular Sensitivities (Asthma, COPD, Allergies): {has_respiratory_sensitivity}
+- Primary Pollution Concerns: {primary_concerns}
+
+[LIFESTYLE & ACTIVITY BASELINE]
+- Daily Transportation Mode: {transportation_mode}
+- Cooking Fuel & Kitchen Setup: {cooking_fuel}
+- Daily Outdoor Exposure Time: {outdoor_activity_level}
+- Work / Education Commute Pattern: {work_routine}
+
+## PERSONALIZATION DIRECTIVES:
+- If sensitive members are present (children, seniors, asthmatics), prioritize HEPA micro-environment protection and strict timing of outdoor activity during smog hours.
+- If transportation is a private fuel vehicle, recommend carpooling, electric transit, or route optimization to reduce both cabin inhalation and tailpipe emissions.
+- If cooking fuel involves biomass or high-smoke gas frying without high-flow range hoods, provide target kitchen ventilation tactics.
+- Adapt strictly to the stated AQI severity:
+  * Good / Satisfactory: Promote natural deep ventilation, outdoor exercise, active mobility.
+  * Moderate / Poor: Advise sensitive groups to limit prolonged exertion; recommend active transit during off-peak traffic.
+  * Very Poor / Severe: Urge indoor shelter, sealing leaks, HEPA air cleaning, N95/FFP2 for essential transit, zero outdoor cardiovascular exercise.

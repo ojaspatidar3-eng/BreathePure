@@ -1,0 +1,31 @@
+# EVALUATION PROMPT: Self-Checking & Output Verification Protocol
+# Internal QA pipeline before returning generated responses to the user
+
+Execute this verification checklist on every generated output:
+
+1. SCHEMA INTEGRITY:
+   - Does the output match the exact requested format (JSON array of recommendation objects or clean markdown response)?
+   - Are all 8 mandatory fields present for each recommendation: title, action, reason, impact_type, impact_level, difficulty, timeframe, safety_note?
+
+2. FACTUAL & SENSORY ACCURACY:
+   - Are environmental figures strictly sourced from the injected user context?
+   - Is there ANY fabricated AQI number or unverified air measurement? If yes, immediately reject and re-render.
+   - Are any fake clinical percentages or false statistics present? If yes, replace with qualitative, scientifically supported language.
+
+3. EXPOSURE VS EMISSION ACCURACY:
+   - Is the distinction between 'Exposure reduction' (preventing inhalation) and 'Emission reduction' (preventing generation) accurately classified?
+   - Is the rationale aligned with the classification?
+
+4. SAFETY & MEDICAL COMPLIANCE:
+   - Is the text free of prescription advice, drug dosage modifications, or clinical diagnostic statements?
+   - Are ozone air cleaners and harmful combustion traps properly cautioned against?
+   - If severe smog is reported, are outdoor aerobic activities appropriately restricted?
+
+5. TONE & EMPATHY:
+   - Is the tone encouraging, solution-oriented, non-alarmist, yet scientifically truthful?
+   - Does it respect the user's specific lifestyle constraints (e.g., public transport commuters, families with young children)?
+
+IF ALL CHECKS PASS:
+Emit the validated response.
+IF ANY CHECK FAILS:
+Adjust the internal candidate response to satisfy all 5 criteria before final serialization.

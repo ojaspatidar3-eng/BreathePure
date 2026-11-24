@@ -1,0 +1,67 @@
+# RECOMMENDATION PROMPT: Structured Output & Few-Shot Exemplars
+# Generates validated recommendations conforming to the BreathePure JSON Schema
+
+You must produce recommendations conforming strictly to the JSON schema below.
+Respond with a valid JSON array of objects or a single valid JSON object as requested.
+
+## REQUIRED JSON SCHEMA
+{
+  "title": "string (Concise, engaging title, 4-8 words)",
+  "action": "string (Actionable, specific imperative instruction)",
+  "reason": "string (Scientific rationale explaining physiological or atmospheric mechanism)",
+  "impact_type": "Exposure reduction | Emission reduction | Dual benefit",
+  "impact_level": "Low | Medium | High",
+  "difficulty": "Easy | Moderate | Difficult",
+  "timeframe": "string (e.g., 'Immediate (Next 1 hour)', 'Morning commute', 'Daily routine', 'Next 48 hours')",
+  "safety_note": "string (Precautionary notes, sensitive group warnings, or practical caveat)"
+}
+
+## FEW-SHOT EXEMPLARS
+
+### Example 1 (Severe Winter Smog, Asthmatic Senior in Household, High PM2.5):
+{
+  "title": "Create a Clean-Air Sanctuary Bedroom",
+  "action": "Seal window gaps in the senior's bedroom with draft-stopping foam or moist towels, run a true HEPA H13 purifier continuously on medium speed, and keep doors closed.",
+  "reason": "During severe temperature inversion, fine PM2.5 particles penetrate building envelopes through drafts. Isolating a single sleeping room lowers particulate burden where seniors spend 8+ hours breathing resting tidal volume.",
+  "impact_type": "Exposure reduction",
+  "impact_level": "High",
+  "difficulty": "Easy",
+  "timeframe": "Immediate (Next 1-2 hours)",
+  "safety_note": "Ensure the purifier does not use ozone or ionic generation, which can trigger bronchospasm in individuals with asthma."
+}
+
+### Example 2 (Commuter in High-Traffic Corridor, Poor AQI, Private Petrol Car):
+{
+  "title": "Transition to Metro Rail with Multi-Station Carpooling",
+  "action": "Switch 3 days per week to the electrified rapid metro transit line, carpooling with neighbors to the nearest metro park-and-ride hub.",
+  "reason": "Eliminating solo petrol vehicle idling during congestion avoids stop-and-go hydrocarbon emissions and nitrogen dioxide output while sparing the driver from concentrated in-cabin exhaust tunnels.",
+  "impact_type": "Emission reduction",
+  "impact_level": "High",
+  "difficulty": "Moderate",
+  "timeframe": "Next commuting cycle",
+  "safety_note": "Wear a well-fitted certified N95 or FFP2 respirator on crowded above-ground platforms where diesel bus and auto exhaust accumulates."
+}
+
+### Example 3 (Kitchen Smoke & Biomass / LPG High-Heat Cooking):
+{
+  "title": "Dual-Zone Kitchen Ventilation & Lid-Cooking Technique",
+  "action": "Always turn on mechanical exhaust 2 minutes prior to lighting burners, keep the kitchen door closed to living areas, and cook with closed lids.",
+  "reason": "Combustion of cooking gas and hot frying oil produces ultra-fine particles (UFP) and nitrogen dioxide in concentrations that frequently exceed outdoor smog peaks within confined spaces.",
+  "impact_type": "Exposure reduction",
+  "impact_level": "High",
+  "difficulty": "Easy",
+  "timeframe": "Daily meal preparation",
+  "safety_note": "Never seal a kitchen completely while gas flames are burning; maintain an external fresh airflow crack to prevent carbon monoxide accumulation."
+}
+
+### Example 4 (Community Clean-Air Action, Winter Smog Prevention):
+{
+  "title": "Neighborhood Biomass & Leaf Burning Vigilance",
+  "action": "Coordinate with your Resident Welfare Association or community watch to report open dry-leaf and municipal waste burning on local civic portals, offering composting bags instead.",
+  "reason": "Open burning in winter smolders under low temperatures, releasing high concentrations of toxic black carbon, dioxins, and polycyclic aromatic hydrocarbons directly at ground breathing level.",
+  "impact_type": "Emission reduction",
+  "impact_level": "High",
+  "difficulty": "Moderate",
+  "timeframe": "Community winter protocol",
+  "safety_note": "Do not confront unauthorized burning aggressively; use designated municipal helplines and community-organized wet-waste collection."
+}
