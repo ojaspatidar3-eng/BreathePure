@@ -1,7 +1,7 @@
 # BreathePure — Smarter Air. Healthier Life.
 
 > **Hack2Skill Prompt Wars — Challenge 6: Urban Air Quality Assistant**  
-> An intelligent environmental companion engineered for families and communities to navigate severe winter smog and urban air pollution through verified telemetry, contextual GenAI, and evidence-based low-emission habits.
+> An intelligent environmental companion engineered for families and communities to navigate severe winter smog and urban air pollution through atmospheric telemetry and reanalysis data, contextual GenAI, and evidence-based low-emission habits.
 
 ---
 
@@ -40,12 +40,12 @@ Citizens frequently face confusing air quality indices, lack actionable microenv
                       ┌──────────────────┴──────────────────┐
                       ▼                                     ▼
              [ AQI Data Service ]                 [ AI Assistant Service ]
-          - Open-Meteo Global API               - Prompt Defense (Anti-Jailbreak)
-          - CPCB Sub-Index Math (NAQI)          - Prompt Manager (Context Injection)
-          - Transparent Attribution             - Gemini AI Provider (REST)
+          - Open-Meteo Reanalysis API           - Prompt Defense (Anti-Jailbreak)
+          - CPCB NAQI Sub-Index Calculation     - Prompt Manager (Context Injection)
+          - Multi-Source Data Labeling          - Gemini AI Provider (REST)
           - In-Memory TTL Caching               - Deterministic Demo Provider
           - Manual Simulation Engine            - Pydantic Schema Validator
-                                                - Safety & Medical Self-Check
+          - Station & Offline Fallback State    - Safety & Medical Self-Check
 ```
 
 ---
@@ -64,9 +64,12 @@ Citizens frequently face confusing air quality indices, lack actionable microenv
 - One-click presets: *Delhi Vulnerable Family*, *Mumbai Commuter*, *Bengaluru Techie*, and *Tier-2 Kitchen Transition*.
 
 ### C. Air Quality Dashboard
-- Real-time AQI with CPCB Indian NAQI category interpretation (Good, Satisfactory, Moderate, Poor, Very Poor, Severe).
-- Sub-indices for PM2.5, PM10, NO₂, SO₂, CO, and O₃ benchmarked against Indian CPCB national ambient limits.
-- Honest data labeling: distinguishes **Live Station Telemetry**, **Manual Simulation Entry**, and **Offline Educational Baseline**.
+- Model-based ambient air-quality estimates with CPCB NAQI category interpretation (Good, Satisfactory, Moderate, Poor, Very Poor, Severe).
+- Sub-indices for PM2.5, PM10, NO₂, SO₂, CO, and O₃ calculated using standard Indian CPCB NAQI breakpoint sub-index formulas.
+- **Transparent Data Provenance & Proven Data Sources:** The application rigorously differentiates between data sources supported by the code:
+  - **Model-Based Atmospheric Reanalysis Data:** Continuous ambient pollutant estimates retrieved via the Open-Meteo Air Quality API with standardized CPCB NAQI calculation (clearly identified as model-based atmospheric reanalysis, not direct CPCB physical ground-station monitors).
+  - **Manual Simulation Entry:** Interactive user-input console enabling scenario testing of extreme pollution spikes, microenvironments, and educational exercises without fabricating live data.
+  - **Actual Station Data & Offline State:** Robust state architecture supporting physical ground-station monitoring inputs alongside an honest fallback state (illustrative baseline or data unavailable status when external APIs are unreachable, never inventing readings).
 - Interactive Manual AQI simulation console for evaluating extreme scenarios.
 
 ### D. AI Air Quality Assistant
@@ -118,7 +121,7 @@ Citizens frequently face confusing air quality indices, lack actionable microenv
 
 ## 5. Prompt Engineering — Core Competitive Advantage
 
-BreathePure implements 10 prompt engineering techniques located in `backend/prompts/`:
+BreathePure implements 10 advanced prompt engineering techniques located in `backend/prompts/`. All prompt templates, dynamic context injection, safety protocols, and guardrails operate strictly server-side within the backend architecture — there is no public or client-facing Prompt Inspector interface, preserving strict prompt security and injection defense while delivering validated recommendations.
 
 | # | Technique | Implementation in BreathePure | File |
 |---|---|---|---|
@@ -129,7 +132,7 @@ BreathePure implements 10 prompt engineering techniques located in `backend/prom
 | **5** | **Few-Shot Prompting** | Multi-scenario golden exemplars demonstrating high-quality recommendations across smog, transit, and kitchen use cases. | `recommendation_prompt.txt` |
 | **6** | **Contextual Personalization** | Differentiates guidance based on vulnerability (infants vs asthmatics) and commute mode (two-wheeler vs car). | `personalization_prompt.txt` |
 | **7** | **Self-Checking** | Pre-output evaluation checklist verifying exposure vs emission tags, medical compliance, and schema completeness. | `evaluation_prompt.txt` |
-| **8** | **Uncertainty Handling** | Explicitly acknowledges telemetry limitations; flags manual simulation entries without pretending to be live station data. | `system_prompt.txt`, `aqi.py` |
+| **8** | **Uncertainty Handling** | Explicitly acknowledges telemetry limitations; transparently labels model-based data and manual simulations without pretending they are direct physical station readings. | `system_prompt.txt`, `aqi.py` |
 | **9** | **Prompt Injection Defense** | Sanitizes user inputs, scans for jailbreak tokens, and encloses user queries within `<USER_INPUT_UNTRUSTED>` delimiter tags. | `prompt_defense.py` |
 | **10** | **Output Validation** | Backend Pydantic schema parsing, Markdown code-fence stripping, and defensive repair fallback. | `ai_service.py` |
 
@@ -147,7 +150,7 @@ BreathePure implements 10 prompt engineering techniques located in `backend/prom
 ### Backend
 - **Framework:** FastAPI (Python 3.14+)
 - **Validation:** Pydantic 2.8+
-- **Telemetry:** Open-Meteo Global Air Quality API & CPCB Sub-Index calculation
+- **Telemetry & Data Provenance:** Open-Meteo Global Atmospheric Reanalysis API with CPCB NAQI sub-index calculation, manual simulation engine, and distinct data provenance labeling
 - **AI Integration:** Google Gemini API (`gemini-2.5-flash`) via REST with Deterministic Demo fallback
 - **Testing:** Pytest
 
@@ -162,8 +165,8 @@ BreathePure implements 10 prompt engineering techniques located in `backend/prom
 ### 1. Clone & Setup Backend
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/hackskills.git
-cd hackskills
+git clone https://github.com/ojaspatidar3-eng/BreathePure.git
+cd BreathePure
 
 # Install backend dependencies
 pip install -r backend/requirements.txt
@@ -196,7 +199,7 @@ npm run dev
 
 ## 8. Automated Test Suite
 
-BreathePure includes a comprehensive automated test suite covering all critical pathways.
+BreathePure includes a comprehensive automated test suite covering all critical pathways. Prompt metadata and template tests (`test_prompts_list_and_inspect`, `test_prompt_inspector_metadata`) validate backend prompt engineering structures, technique coverage, and defensive guardrails strictly as backend tests, not as a public-facing feature.
 
 ```bash
 # Run backend pytest suite from workspace root
@@ -207,7 +210,7 @@ python -m pytest backend/tests -v
 ```
 ============================= test session starts =============================
 platform win32 -- Python 3.14.3, pytest-9.2.0, pluggy-1.7.0
-rootdir: C:\Users\Ojas Patidar\OneDrive\Desktop\hackskills
+rootdir: BreathePure
 configfile: pytest.ini
 collected 31 items
 
@@ -280,8 +283,8 @@ To maintain the required `< 10 MB` repository size:
 ## 11. Known Limitations & Safety Principles
 
 1. **Non-Medical Boundary:** BreathePure provides environmental exposure reduction guidance. It does not provide medical diagnoses, alter drug prescriptions, or replace consultation with a licensed pulmonologist.
-2. **Microenvironment Variations:** Regional station telemetry may vary from localized street microenvironments due to nearby construction or street food stalls. Users can utilize the manual simulation mode to test hyper-local readings.
-3. **Open Meteorological Dependencies:** Telemetry utilizes Open-Meteo Global Atmospheric Reanalysis models. If third-party station feeds experience outages, BreathePure surfaces an honest offline notice instead of fabricating fake numbers.
+2. **Microenvironment Variations:** Regional ambient model data may differ from localized street microenvironments due to hyper-local sources like construction, traffic queues, or solid fuel burning. Users can utilize the manual simulation mode to test hyper-local scenarios.
+3. **Data Provenance & Source Distinction:** Live ambient air data is sourced from Open-Meteo Global Atmospheric Reanalysis models with standardized CPCB NAQI calculations, rather than direct physical CPCB monitoring station feeds. If external feeds experience outages or station telemetry is unreachable, BreathePure surfaces an honest offline notice or enables manual simulation instead of fabricating fake live station readings.
 
 ---
 
