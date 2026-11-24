@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: breathe-pure
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: bash build.sh
+    startCommand: python backend/run_backend.py
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: ENVIRONMENT
+        value: production
+      - key: GEMINI_API_KEY
+        sync: false

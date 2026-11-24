@@ -195,6 +195,26 @@ npm run dev
 # Frontend runs at http://localhost:5173
 ```
 
+### 4. Single-Service Production Deployment (Render Free Plan)
+BreathePure is architected for zero-cost, single-service deployment on **Render's Free Tier** using a single public URL (`https://<your-app>.onrender.com`). FastAPI serves both the production React SPA and the `/api/*` REST endpoints.
+
+#### Option A: 1-Click Blueprint (Recommended)
+1. Push your repository to GitHub.
+2. In [Render Dashboard](https://dashboard.render.com/), click **New +** → **Blueprint**.
+3. Select your repository. Render automatically reads `render.yaml` and provisions the unified Web Service.
+
+#### Option B: Manual Web Service Setup
+1. Click **New +** → **Web Service** and connect your repository.
+2. Configure settings:
+   - **Environment:** `Python`
+   - **Plan:** `Free`
+   - **Build Command:** `bash build.sh`
+   - **Start Command:** `python backend/run_backend.py`
+   - **Health Check Path:** `/health`
+3. Optional Environment Variables:
+   - `PYTHON_VERSION`: `3.11.9`
+   - `GEMINI_API_KEY`: *(Optional — operates in Deterministic Demo Mode if omitted)*
+
 ---
 
 ## 8. Automated Test Suite
